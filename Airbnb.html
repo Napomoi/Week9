@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Comment -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Find One Airbnb</title>
+</head>
+
+<body>
+  <main>
+    <h1>Find your Ideal Airbnb Listing</h1>
+    <form>
+      <h2>Property Type</h2>
+      <input type="text" id="property_type" name="property_type"><br><br>
+      <h2>Number of Bedrooms</h2>
+      <input id="bedrooms" type="number" value="1"><br><br>
+      <h2>Number of Beds</h2>
+      <input id="beds" type="number" value="1"><br><br>
+    </form>
+    <button onclick="Airbnblisting()"> Search Now </button>
+    <p id="dog-facts"></p>
+
+  </main>
+  <script>
+    async function Airbnblisting() {
+
+      const num_bedrooms = document.getElementById("bedrooms").value;
+      const num_bedrooms_number = parseInt(num_bedrooms, 10);
+
+      const num_beds = document.getElementById("beds").value;
+      const num_beds_number = parseInt(num_beds, 10);
+
+      const property_type = document.getElementById("property_type").value;
+
+      const api_endpoint = `http://localhost:3004/findOne?property_type=${property_type}&num_bedroom=${num_bedrooms}&num_beds=${num_beds}`;
+      const response = await fetch(api_endpoint);
+
+      const json_response = await response.json()
+      const myJSON = JSON.stringify(json_response);
+
+      document.getElementById("dog-facts").innerHTML = myJSON;
+
+      /*       const myJSONData = document.getElementById("dog-facts");
+            ul_dog_facts.innerHTML = ""; */
+
+      /*       for (let i = 0; i < num_facts_number; i++) {
+              const li = document.createElement('li');
+              li.innerText = json_response.facts[i];
+              ul_dog_facts.appendChild(li); */
+    }
+
+
+  </script>
+</body>
+
+</html>
