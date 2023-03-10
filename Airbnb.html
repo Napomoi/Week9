@@ -36,7 +36,7 @@
 
       const property_type = document.getElementById("property_type").value;
 
-      const api_endpoint = `http://localhost:3004/findOne?property_type=${property_type}&num_bedroom=${num_bedrooms}&num_beds=${num_beds}`;
+      const api_endpoint = `http://localhost:3004/findOne?property_type=${property_type}&bedrooms=${num_bedrooms}&beds=${num_beds_number}`;
       const response = await fetch(api_endpoint);
 
       const json_response = await response.json()
